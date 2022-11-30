@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="./style.css" rel="stylesheet"/>
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+            <!--Weather icon not in animation ********************  -->
+        <div id="weathercon">  
+            <i class="fa-solid fa-sun" style="color: #eccc68"></i>
+        </div>
+        <div class="info">
+            <h2 class="location"><i class="fa-solid fa-street-view" style="color: #fff"></i>{%location%}, {%country%}</h2>
+            <p id="date">Wed | OCT23 | 07:14AM</p>
+            <h1 class="temp">{%tempval%}°C</h1>
+            <h3 class="tempmin_max">Min {%tempmin%}°C | Max {%tempmax%}°C</h3>
+        </div>
+    </div>
+    <script>
+        let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let currDay = weekDays[new Date().getDay()];
+        let currDate = new Date().getDate();
+        let month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        let currMonth = month[new Date().getMonth() + 1];
+        let hours = new Date().getHours();
+        let mins = new Date().getMinutes();
+        let period = "AM";
+        if(hours > 12) {
+            period = "PM";
+            if(hours>12)
+                hours-=12;
+        }
+        if(mins<10)
+            mins="0"+mins;
+        let dateUpdate = document.getElementById("date");
+        dateUpdate.innerHTML = `${currDay} | ${currMonth}${currDate} | ${hours}:${mins}${period}`;
+        console.log(dateUpdate.innerHTML);
+        let weathercon = document.getElementById("weathercon");
+    </script>
+</body>
+</html>
